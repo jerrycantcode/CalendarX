@@ -1,2 +1,2 @@
 # CalendarX
-A localStorage calendar app with file support and events
+A localStorage calendar app with events
