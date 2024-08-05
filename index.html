@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>CalendarX</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <div id="one">
+            <div id="monthSelect"><button id="backward" onclick="theStrategy--; createGrid()"><img
+                        src="assets/back.svg"></button>
+                <p style="font-family: 'Montserrat'"></p><button id="forward" onclick="theStrategy++; createGrid()"><img
+                        src="assets/forward.svg"></button>
+            </div>
+            <div id="dayWeek"></div>
+            <div class="grid-parent">
+
+                <div id="calendar-grid">
+
+                </div>
+            </div>
+        </div>
+        <div id="two" class="shown">
+            <div id="date"><img src="assets/date.svg">
+                <p id="dateP"></p>
+            </div>
+            <div id="events">
+                <button class="addBtn" onclick="moveMenu()"><img src="assets/add.svg"></img></button>
+                <p>Events</p>
+                <div id="eventsContainer">
+                    No Events Here!
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-container" id="sliderContainer">
+            <input oninput="updateColorTheme(this.value)" type="range" min="0" max="360" value="240" class="slider">
+        </div>
+        <button class="toggle-button" id="toggleButton"><img src="assets/brush.svg"></button>
+    </div>
+    <div class="popup">
+        <div class="popHeader">Add an Event</div>
+        <div class="mainPop">
+            <div>
+                <input id="titleInput" type="text" placeholder="Title of Event..."></input>
+                <input id="colorInput" type="color"></input>
+            </div>
+            <div class="cb">
+                <input type="checkbox" onchange="check(this.checked)">
+                <p>All-Day Event</p>
+            </div>
+            <div class="time">
+                <input id="timeInputS" type="time"></input>
+                <input id="timeInputE" type="time"></input>
+            </div>
+            <button onclick="addEvent()">Add Event</button>
+
+        </div>
+
+    </div>
+    <div id="overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap');
+
+:root {
+    --calendarBackground: rgb(0, 0, 47);
+    --calendarGridSpace: rgb(0, 0, 77);
+    --headerColor: rgb(18, 18, 96);
+    --twoColor: rgb(11, 11, 71);
+    --secEventColor: darkblue;
+    --selectedColor: #0076cb;
+}
+
+/* redscale
+:root {
+    --calendarBackground: rgb(47, 0, 0);
+    --calendarGridSpace: rgb(77, 0, 0);
+    --headerColor: rgb(96, 18, 18);
+    --twoColor: rgb(71, 11, 11); 
+    --secEventColor: rgb(136, 7, 7); 
+    --selectedColor: rgb(200, 0, 0);
+}*/
+
+
+html {
+    overflow-y: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    margin-top: 0vh;
+    height: 100vh;
+    background-color: black;
+    transition: 0.7s ease;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: -55;
+    opacity: 0;
+    transition: 0.5s ease;
+}
+
+#calendar-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, 50px);
+    grid-template-rows: repeat(auto-fill, 50px);
+
+    gap: 0px;
+    width: calc(50px * 7);
+    transition: 0.5s ease;
+}
+
+#dayWeek {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, 50px);
+    grid-template-rows: repeat(auto-fill, 50px);
+
+    gap: 0px;
+    width: calc(50px * 7);
+    height: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: var(--calendarBackground);
+}
+
+.spedcircle {
+    border-bottom: 1px solid white;
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Montserrat';
+    user-select: none;
+}
+
+.circle {
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+    border-radius: 5px;
+    background-color: var(--calendarGridSpace);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-family: 'Montserrat';
+    user-select: none;
+    cursor: pointer;
+}
+
+#date {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    height: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 0px 10px 0px 0px;
+    background-color: var(--headerColor);
+    user-select: none;
+}
+
+#events {
+    width: calc(50px * 7);
+    background-color: var(--twoColor);
+    border-radius: 0px 0px 10px 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: 365px;
+}
+
+.event {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: calc(100% - 0px);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    padding-left: 20px;
+    color: white;
+    font-family: 'Montserrat';
+    background-color: var(--headerColor);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    transition: 0.5s ease;
+}
+
+.event:hover {
+    padding-left: 10px;
+}
+
+#date img {
+    height: 35px;
+    width: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+.grid-parent {
+    background-color: var(--calendarBackground);
+    border-radius: 0 0 0px 10px;
+}
+
+#monthSelect {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    height: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px 0px 0px 0px;
+    background-color: var(--headerColor);
+    user-select: none;
+}
+
+#monthSelect p {
+    font-family: 'Montserrat';
+}
+
+#monthSelect button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#monthSelect button img {
+    width: 30px;
+}
+
+#forward {
+    margin-left: auto;
+    padding-right: 50px;
+}
+
+#backward {
+    margin-right: auto;
+    padding-left: 50px;
+}
+
+.selected {
+    background-color: var(--selectedColor);
+}
+
+#dateP {
+    font-family: 'Montserrat';
+    font-size: 24px;
+    color: white;
+    margin: 10px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+    align-items: row;
+}
+
+#one {
+    z-index: 4;
+}
+
+#two {
+    transition: 0.5s ease;
+    z-index: 3;
+}
+
+.hidden {
+    margin-left: calc(50px * -7 + -50px);
+    opacity: 0;
+}
+
+.shown {
+    margin-left: 0;
+    opacity: 1;
+}
+
+.addBtn {
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--headerColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px;
+    margin-left: auto;
+    margin-top: 0px;
+    border: none;
+    margin-bottom: -45px;
+    z-index: 99999;
+}
+
+.addBtn img {
+    scale: 1.4;
+}
+
+input {
+    font-family: 'Montserrat';
+}
+
+.popup input[type="color"] {
+    width: 65px;
+    height: 53px;
+    border-radius: 8px;
+    outline: none;
+    outline-style: none;
+    border: none;
+    margin-left: 10px;
+    background-color: transparent;
+    vertical-align: middle;
+}
+
+input::-webkit-color-swatch {
+    border: none;
+    border-radius: 5px;
+}
+
+input[type="text"],
+.time input {
+    height: 38px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    outline: none;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.time {
+    width: 25vw;
+    display: flex;
+    gap: 15px;
+}
+
+.time input {
+    flex: 1;
+}
+
+.popup div div {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup button {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: var(--headerColor);
+    color: white;
+    border: 1px solid white;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.mainPop {
+    width: 35vw;
+    height: auto;
+    padding: 25px;
+    background-color: var(--headerColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px 0px 20px 20px;
+    box-sizing: border-box;
+}
+
+#events p {
+    font-family: 'Montserrat';
+    color: white;
+    font-size: 28px;
+    margin: 0px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    transition: 1s ease;
+    background-color: gray;
+}
+
+#deleteBtn {
+    background-color: red;
+    margin-top: 0px;
+}
+
+.eventActions button {
+    margin: 0;
+    padding: 0;
+    height: 80%;
+    width: 30px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: var(--secEventColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    margin-left: 5px;
+}
+
+.eventActions button img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+button {
+    z-index: 100;
+}
+
+.event:hover .eventActions {
+    opacity: 1;
+    margin-right: 0px;
+}
+
+.eventActions {
+    margin-left: auto;
+    height: 40px;
+    opacity: 0;
+    transition: 0.5s ease;
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+    margin-right: -30px;
+}
+
+.event:hover .evtTime {
+    opacity: 0;
+}
+
+.evtTime {
+    position: absolute;
+    right: 10px;
+    transition: 0.5s ease;
+    opacity: 1;
+    margin-left: auto;
+}
+
+.popHeader {
+    height: 55px;
+    width: 35vw;
+    background-color: var(--secEventColor);
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    font-family: 'Montserrat';
+}
+.cb {
+    margin-top: 20px;
+    max-height: 35px;
+    padding: 0;
+    padding-top: 40px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Montserrat';
+}
+.cb input {
+    transform: scale(2)
+}
+#eventsContainer {
+    padding: 10px;
+    padding-top: 5px;
+    font-family: 'Montserrat';
+    color: white;
+}
+#eventsContainer p {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.circle div {
+    margin-top: 3px;
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slider-container {
+    position: fixed;
+    right: -300px; /* Start hidden */
+    bottom: 10px;
+    width: 300px;
+    height: 40px;
+    width: 200px;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: right 0.5s ease;
+    background-color: var(--calendarGridSpace);
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    width: 90%;
+    margin: 10%;
+}
+
+.toggle-button {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--calendarGridSpace);
+    border: none;
+    border-radius: 5px;
+}
+.toggle-button img {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+}
